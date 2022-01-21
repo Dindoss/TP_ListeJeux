@@ -1,0 +1,29 @@
+/*----------------------------------------------------------------------------------------------------------------------> Partie global html, body  */
+html, body{
+    min-height: 100vh;
+    max-height: 100vh;
+}
+
+html{
+    font-family: 'Acme', sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 900px;
+}
+
+header{
+    text-align: center;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------> Footer */
+footer{
+    margin: 0.5rem 0;
+}
+
+footer.encadre{
+    padding: 1rem;
+}
