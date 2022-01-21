@@ -9,11 +9,16 @@
     margin: 0.5rem 0;
 }
 
-.coord_footer, .lienGiant, .lienSDV{
-    float: left;
-    width: 33%;
+.col_footer{
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
 
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
