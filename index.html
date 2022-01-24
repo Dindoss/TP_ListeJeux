@@ -7,26 +7,33 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
-        <script type="module" src="js/App.js"></script>
+        <script src="js/fallbackFetchGiantBomb.js"></script>
+        <script src="js/script.js"></script>
     </head>
     <body>
-        <header class="encadre">
+        <header class="Encadre">
             <img src="images/logo/logo_sdv_noir.png" alt="logo SDV">
             <h1>Ma liste de jeux</h1>
             <p>Gestion des jeux favoris</p>
         </header>
         <main>
-            <section class="encadre">
-                <p>Menu</p>
-            </section>
-            <section class="encadre">
+            <nav class="Encadre Section_Menu">
+                <form>
+                    <div class="DivSectionMenu">
+                        <input id="searchbar" type="text" name="recherche" placeholder="Recherche.." onkeyup="">
+                        <button class="btn">🔎</button>
+                    </div>
+                    <button class="btn">❤️</button>
+                </form>
+            </nav>
+            <section class="Encadre">
                 <p>Contenu</p>
             </section>
         </main>
-        <footer class="encadre col_footer">
+        <footer class="Encadre Colonne_Footer">
             <span>
                 Développé par : Ange Louis<br>
-                📧 Mail : ange.louis@supdevinci-edu.fr
+                📧 ange.louis@supdevinci-edu.fr
             </span>
             <span>🔗 <a href="https://www.giantbomb.com/" target="_blank">Giantbomb</a></span>
             <span>🔗 <a href="https://www.supdevinci.fr/" target="_blank">SupDeVinci</a></span>

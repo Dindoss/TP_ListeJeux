@@ -18,11 +18,17 @@ body{
 header{
     display: grid;
 }
+nav{
+    padding: 1rem;
+}
+section{
+    padding: 1rem;
+}
 /*----------------------------------------------------------------------------------------------------------------------> Footer */
 footer{
     margin: 0.5rem 0;
 }
 
-footer.encadre{
+footer.Encadre{
     padding: 1rem;
 }
