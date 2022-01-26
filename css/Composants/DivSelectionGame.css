@@ -1,0 +1,25 @@
+.divSelectionGame {
+    text-align: center;
+    padding: 0.3rem;
+    transition: background-color 300ms, color 300ms;
+    border-radius: 0.3rem;
+}
+.divSelectionGame img {
+    width: 100%;
+    background-color: white;
+    border-radius: 0.3rem;
+}
+.divSelectionGame:hover {
+    background-color: black;
+    color: white;
+}
+.divSelectionGame .nomGame {
+    margin-top: 0.5rem;
+    margin-bottom: 0.1rem;
+    font-size: 1.1rem;
+}
+.divSelectionGame .platformsGame {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.1rem;
+}

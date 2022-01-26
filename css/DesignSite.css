@@ -1,17 +1,18 @@
-.Encadre{
+/*----------------------------------------------------------------------------------------------------------------------> ENCADRE NOIR SUR LES 4 BLOCS */
+.encadre{
     position: relative;
     border: 1px solid black;
     margin: 0.5rem 0;
 }
-
-.Colonne_Footer{
+/*----------------------------------------------------------------------------------------------------------------------> FOOTER COLONNES */
+.colonne_Footer{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }
-
+/*----------------------------------------------------------------------------------------------------------------------> HEADER COLONNES */
 header img{
     grid-row: 1 / 5;
     align-self: center;
@@ -24,22 +25,82 @@ header h1{
 }
 header p{
     grid-row: 3 / 3;
+    margin-top: 0;
 }
 
-.Section_Menu{
+/*----------------------------------------------------------------------------------------------------------------------> RESPONSIVE SECTION MENU */
+.section_Menu{
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
     justify-content: space-between;
 }
 
-.DivSectionMenu{
+.divSectionMenu{
     display: flex;
-    flex-wrap: wrap;
 }
-
-.btn:hover {
+/*----------------------------------------------------------------------------------------------------------------------> TRANSITION BOUTON */
+.btn_favoris, .btn_search{
+    padding: 5px 20px;
+    text-align: center;
+    font-size: 16px;
+}
+.btn_favoris:hover, .btn_search:hover {
     background-color: #000000;
     transition: background-color 0.5s, color 0.5s, border-color 0.5s;
     border-radius: 3px;
+    cursor: pointer;
+}
+
+.divGamedex{
+    max-height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.divGamedex .divSelectionGame{
+    width:30%;
+    margin-top: 1%;
+}
+/*----------------------------------------------------------------------------------------------------------------------> DIV IMG, NOM, PLATFORME */
+
+
+
+/*----------------------------------------------------------------------------------------------------------------------> LOADER PAGE */
+.loader {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-top: 20rem;
+}
+.loader::before, .loader::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 100%;
+    animation: rotation 2s linear infinite;
+    --translate: translate(-50%, -50%);
+    transform: var(--translate);
+}
+.loader::before {
+    height: 5rem;
+    width: 5rem;
+    background: linear-gradient(black 0%, black 50%, black 50%, mediumpurple 100%);
+    border: 1px solid black;
+}
+.loader::after {
+    height: 3rem;
+    width: 3rem;
+    background-color: white;
+    border: 1px solid black;
+}
+@keyframes rotation {
+    from {
+        transform: var(--translate) rotate(0deg);
+    }
+    to {
+        transform: var(--translate) rotate(360deg);
+    }
 }
