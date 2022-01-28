@@ -1,0 +1,38 @@
+.divFicheGame{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.divFicheDeck, .divFicheDesc{
+    width: 100%;
+    text-align: justify;
+}
+.divFicheCol{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-between;
+    align-items: center;
+    justify-content: space-between;
+    flex: auto;
+    width: 100%;
+}
+.spanFicheGame {
+    background-color: mediumpurple;
+    border: none;
+    color: black;
+    text-align: center;
+    width: 20%;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 16px;
+}
+.divFichePlatform, .divFicheName{
+    text-align: center;
+    width: 50%;
+}
+.divFicheDatePrevue, .divFicheDateSortie{
+    text-align: center;
+    width: 25%;
+}

@@ -1,8 +1,14 @@
 .divSelectionGame {
     text-align: center;
-    padding: 0.3rem;
     transition: background-color 300ms, color 300ms;
     border-radius: 0.3rem;
+    padding: 0.3rem;
+    cursor:pointer;
+}
+.divGamedex .divSelectionGame{
+    width:30%;
+    margin-top: 2%;
+    background-color: crimson;
 }
 .divSelectionGame img {
     width: 100%;
@@ -13,13 +19,30 @@
     background-color: black;
     color: white;
 }
-.divSelectionGame .nomGame {
-    margin-top: 0.5rem;
-    margin-bottom: 0.1rem;
-    font-size: 1.1rem;
+.divName{
+    font-size: 1.1em;
 }
-.divSelectionGame .platformsGame {
-    font-size: 0.9rem;
+.divPlatform{
+    font-size: 0.9em;
+}
+.divPlatform, .divName{
+    margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    margin-top: 0.1rem;
+}
+
+.divGamedex{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+/*----------------------------------------------------------------------------------------------------------------------> PILL PLATFORMS */
+.spanGame{
+    background-color: #fff;
+    border: none;
+    color: black;
+    text-align: center;
+    width: 20%;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 16px;
 }
