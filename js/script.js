@@ -7,9 +7,9 @@
 // }
 let sectionPage;
 window.onload = init;
+let ListFavoris = [];
 
 function init() {
-
     sectionPage = document.querySelector(".sectionPage");
     if (!sectionPage) {
         throw new Error("sectionPage introuvable");
@@ -68,8 +68,8 @@ async function searchGames(){
             }catch(e){
                 sectionPage.innerHTML = `Erreur pendant le chargement de l'aperçu de : ${game.nom}`;
             }
-        }
-        /* AFFICHAGE LE NOMBRE DE PLATEFORMES D'UN JEU, SI CELLE CI EST SUPERIEUR A 4 */
+        };
+        /* AFFICHE LE NOMBRE DE PLATEFORMES D'UN JEU, SI CELLE CI EST SUPERIEUR A 4 */
         let k = 0;
         const divPlatform = divGame.querySelector(".divPlatform");
         for (let i=0; i < game.platforms.length; i++){
@@ -102,6 +102,7 @@ async function showGame(game){
     const divFicheGame = document.createElement("div");
     divFicheGame.classList.add("divFicheGame");
     divFicheGame.innerHTML = `
+        <button id="btn_favorisGame" class="btn_favorisGame">Ajouter aux favoris</button>
         <div class="divFicheCol">
             <div class="divFicheName">
                 <span class="nomFicheGame">${game.nom}</span>
@@ -111,7 +112,7 @@ async function showGame(game){
             </div>
         </div>
         <div class="separateur"></div>
-        <div class="divFicheCol">
+        <div class="divFicheCol"> 
             <div class="divFichePlatform">
             </div>
             <div class="divFicheDateSortie">
@@ -134,7 +135,18 @@ async function showGame(game){
             <span class="descFicheGame">${game.desLongue ? game.desLongue : "Ce jeu n'a pas de description longue."}</span>
         </div>
     `;
-    /* AFFICHAGE LE NOMBRE DE PLATEFORMES D'UN JEU, SI CELLE CI EST SUPERIEUR A 4 */
+    const btn_favorisGame = divFicheGame.querySelector("#btn_favorisGame");
+    btn_favorisGame.onclick = ()=>{
+        if (btn_favorisGame.innerHTML === "Ajouter aux favoris"){
+            addFavoris(game);
+            btn_favorisGame.innerHTML = "Retirer des favoris";
+        }
+        else{
+            deleteFavoris(game);
+            btn_favorisGame.innerHTML = "Ajouter aux favoris";
+        }
+    };
+    /* AFFICHE LE NOMBRE DE PLATEFORMES D'UN JEU, SI CELLE CI EST SUPERIEUR A 4 */
     let k = 0;
     const divFichePlatform = divFicheGame.querySelector(".divFichePlatform");
     for (let i=0; i < game.platforms.length; i++){
@@ -160,9 +172,72 @@ async function showGame(game){
     }
 
 }
+/*----------------------------------------------------------------------------------------------------------------------> SAUVEGARDER JEU FAVORI */
+async function saveFavoris(){
+    localStorage.setItem("ListFavoris", JSON.stringify(ListFavoris));
+}
+/*----------------------------------------------------------------------------------------------------------------------> AJOUTER JEU FAVORI */
+async function addFavoris(game){
+    ListFavoris.push(game);
+    saveFavoris();
+}
+/*----------------------------------------------------------------------------------------------------------------------> SUPPRIMER JEU FAVORI */
+async function deleteFavoris(game){
+    ListFavoris.splice(game);
+    saveFavoris();
+}
 /*----------------------------------------------------------------------------------------------------------------------> AFFICHER JEUX FAVORIS */
 async function showFavoris(){
     sectionPage.innerHTML = "";
+    const divGamedex = document.createElement("div");
+    divGamedex.classList.add("divGamedex");
+    sectionPage.append(divGamedex);
+    for (let i = 0; i < ListFavoris.length; i++){
+        const game = ListFavoris[i];
+        const divGame = document.createElement("div");
+        divGame.classList.add("divSelectionGame");
+        divGame.innerHTML =`
+            <div class="divImage">
+                <img src="${game.imageScreen}" alt="Image game ${game.nom}">
+            </div>
+            <div class="divName">
+                <span class="nomGame">${game.nom}</span>
+            </div>
+            <div class="divPlatform">
+            </div>
+		`;
+        divGame.onclick = () =>{
+            try{
+                showGame(game);
+            }catch(e){
+                sectionPage.innerHTML = `Erreur pendant le chargement de l'aperçu de : ${game.nom}`;
+            }
+        };
+        /* AFFICHE LE NOMBRE DE PLATEFORMES D'UN JEU, SI CELLE CI EST SUPERIEUR A 4 */
+        let k = 0;
+        const divPlatform = divGame.querySelector(".divPlatform");
+        for (let i=0; i < game.platforms.length; i++){
+            if (i>=4){
+                k++;
+            }
+            else{
+                const spanPlatformsGame = document.createElement("span");
+                spanPlatformsGame.classList.add("spanGame");
+                spanPlatformsGame.innerText = game.platforms[i].abbreviation;
+                divPlatform.append(spanPlatformsGame);
+            }
+        }
+        if (k === 0){
+            divGamedex.append(divGame);
+        }
+        else{
+            const spanPlatformsGame = document.createElement("span");
+            spanPlatformsGame.classList.add("spanGame");
+            spanPlatformsGame.innerText = "+ " + k ;
+            divPlatform.append(spanPlatformsGame);
+            divGamedex.append(divGame);
+        }
+    }
 }
 /*----------------------------------------------------------------------------------------------------------------------> CLASSE JEU */
 class Game {
